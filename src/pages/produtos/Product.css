@@ -1,0 +1,44 @@
+h4.card-title.preco, .preco {
+  color: red;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+.img-produto {
+  width: 70%;
+  margin-left: 50px;
+}
+
+.col-md-3,
+.col-md-4 {
+padding: 1rem;
+text-align: center;
+}
+.colunaTextoAlinhamento {
+  text-align: left;
+}
+.ratingDetailsPage {
+  font-size: .7rem;
+  font-weight: 700;
+}
+.ComEstoque {
+  color: #009225;
+  font-weight: 700;
+}
+.SemEstoque{
+color: #ff0000;
+font-weight: 700;
+}
+.alinhamentoTexto {
+  text-align: justify;
+}
+.btnAddToCart {
+  font-weight: bold;
+}
+.cart-page-product {
+  width: 80%;
+  float: right;
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f3f3f3;
+}
