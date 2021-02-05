@@ -15,13 +15,12 @@ import {
   MDBIcon
 } from "mdbreact";
 
-import data from './../../Data';
 import Rating from './../../components/Rating';
 import { Link } from 'react-router-dom';
 
 export default function ProductDetail(props) {
 
-  const product = data.products.find((x) => x._id === props.match.params.id);
+  const product = products.find((x) => x._id === props.match.params.id);
   if (!product) {
     return
     <div>
