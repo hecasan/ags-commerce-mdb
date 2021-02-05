@@ -47,7 +47,7 @@ class App extends Component {
           <MDBNavbar color='deep-purple' dark expand='md' fixed='top' scrolling>
             <MDBNavbarBrand href='/' className='py-0 font-weight-bold'>
 
-              <MDBIcon /><strong className='align-middle'>Loja Virutal</strong>
+              <MDBIcon /><strong className='align-middle'>Loja Virtual</strong>
             </MDBNavbarBrand>
             <MDBNavbarToggler
               onClick={this.toggleCollapse('mainNavbarCollapse')}
