@@ -40,7 +40,7 @@ export default function HomePage() {
                   ? <MessageBox variant="danger">{error}</MessageBox>
                   : <MDBRow id='categories'>
                     {
-                      products.map(product => (
+                      products.map((product) => (
                         <Product key={product._id} product={product} />
                       ))
                     }
