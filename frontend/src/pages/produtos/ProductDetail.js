@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState, Component } from 'react'
 
 import {
   MDBContainer,
@@ -26,17 +26,18 @@ import { detailsProduct } from '../../actions/productActions';
 
 export default function ProductDetail(props) {
   const dispatch = useDispatch();
-
   const productId = props.match.params.id;
-
+  const [qtde, setQtde] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
-
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
 
+  const addToCartHandler = () => {
+    props.history.push(`/cart/${productId}?qtde=${qtde}`)
+  }
   return (
     <>
       <div className='mt-3 mb-5'>
@@ -53,7 +54,7 @@ export default function ProductDetail(props) {
                   : <div>
                     <MDBContainer fluid>
                       <MDBRow>
-                        <MDBCol md="4">
+                        <MDBCol md="3">
                           <MDBCardImage
                             cascade
                             className='img-fluid'
@@ -61,7 +62,7 @@ export default function ProductDetail(props) {
                             alt={product.name}
                           />
                         </MDBCol>
-                        <MDBCol md="4" className="colunaTextoAlinhamento">
+                        <MDBCol md="6" className="colunaTextoAlinhamento">
                           <MDBCardTitle>
                             <strong>{product.name}</strong>
                           </MDBCardTitle>
@@ -88,21 +89,35 @@ export default function ProductDetail(props) {
 
                         </MDBCol>
 
-                        <MDBCol md="4">
+                        <MDBCol md="3">
                           <div className="cart-page-product">
 
-
-                            <MDBCardTitle>
-                              <p><b>Preço: </b><span className="preco">R$ {product.price}</span></p>
-                            </MDBCardTitle>
-
+                            <MDBRow>
+                              <MDBCol md="6">
+                                <MDBCardTitle>
+                                  Preço:
+                                </MDBCardTitle>
+                              </MDBCol>
+                              <MDBCol md="6"><span className="preco">R$ {product.price}</span></MDBCol>
+                            </MDBRow>
 
                             <MDBCardText>
                               {product.countInStock > 0 ? (
                                 <>
-                                  <span className="ComEstoque">Total no estoque: {product.countInStock}</span>
+                                  <p><span className="ComEstoque">Total no estoque: {product.countInStock}</span></p>
+                                  <MDBRow>
+                                    <MDBCol md="6"><span className="qtde">Quantidade:</span></MDBCol>
+                                    <MDBCol md="6"><select className="browser-default custom-select" value={qtde} onChange={e => setQtde(e.target.value)}>
+                                      {
+                                        [...Array(product.countInStock).keys()].map((x) => (
+                                          <option key={x + 1} value={x + 1} > {x + 1}</option>
+                                        ))
+                                      }
+                                    </select></MDBCol>
+                                  </MDBRow>
+
                                   <div>
-                                    <MDBBtn color="dark-green" size="lg" className="btnAddToCart">Colocar no Carrinho <MDBIcon icon="cart-plus" /></MDBBtn>
+                                    <MDBBtn color="dark-green" size="lg" className="btnAddToCart" onClick={addToCartHandler}>Colocar no Carrinho <MDBIcon icon="cart-plus" /></MDBBtn>
                                   </div>
                                 </>
                               ) : (
