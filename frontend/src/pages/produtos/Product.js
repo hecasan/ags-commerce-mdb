@@ -12,6 +12,7 @@ import {
 } from 'mdbreact';
 import './Product.css'
 import Rating from './../../components/Rating';
+import { Link } from 'react-router-dom';
 
 export default function Product(props) {
   const { product } = props;
@@ -46,7 +47,7 @@ export default function Product(props) {
 
               <MDBCardText small className="categoria">
                 <p>Categoria: {product.category} <br />Ainda tem <b>{product.countInStock}</b> no estoque</p>
-                <a href={`/product/${product._id}`} class="btn btn-danger">Comprar</a>
+                <Link to={`/product/${product._id}`} class="btn btn-danger">Comprar</Link>
               </MDBCardText>
             </div>
           </div>

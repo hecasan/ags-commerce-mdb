@@ -71,6 +71,16 @@ class App extends Component {
                     <strong>Empresa</strong>
                   </MDBNavLink>
                 </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink
+                    onClick={this.closeCollapse('mainNavbarCollapse')}
+                    to='/cart'
+                  >
+                    <strong>Carrinho
+
+                    </strong>
+                  </MDBNavLink>
+                </MDBNavItem>
 
               </MDBNavbarNav>
             </MDBCollapse>

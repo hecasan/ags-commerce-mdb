@@ -13,7 +13,7 @@ class Routes extends React.Component {
         <Route exact path='/' component={HomePage} />
         <Route path='/empresa' component={Empresa} />
         <Route path='/product/:id' component={ProductDetail} />
-        <Route path='/cart/:id' component={Cart} />
+        <Route path='/cart/:id?' component={Cart} />
 
         <Route
           render={function () {
